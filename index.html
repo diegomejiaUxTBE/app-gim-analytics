@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Proyecto con Estilo Material UI</title>
+    <!-- Importa tus componentes de Stencil JS -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="http://localhost:3333/GuiaAplicaciones/3.1.19/build/mutua-components-guide.css">
+    <script type="module" src="http://localhost:3333/GuiaAplicaciones/3.1.19/build/mutua-components-guide.esm.js"></script>
+    <script nomodule src="http://localhost:3333/GuiaAplicaciones/3.1.19/build/mutua-components-guide.js"></script>
+</head>
+<body>
+    <header>
+        <mm-banner bcolor="#004A93">
+            <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+            <p class="mr-s">Existe una nueva versión de la GIM: <strong>3.1.0-beta3.</strong></p>
+            <a href="https://intranetd.mutua.es/GuiaAplicaciones/3.1.0-beta3/" aria-label="Enlace a versión actualizada" title="GIM">
+            Acceder a la versión actualizada
+            </a>
+        </mm-banner>  
+    </header>
+
+    <main>
+        <section>
+            <h1>Bienvenido a Nuestra Web</h1>
+            <p>Esta es una página de ejemplo con estilos inspirados en Material UI.</p>
+            <ul class="mm-list">
+                <li>By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside,
+                    the sable cloud beneath</li>
+                <ul class="mm-sublist">
+                    <li>By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath</li>
+                    <li>By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath</li>
+                    <li>By the same illusion which lifts the horizon of the sea to the level of the spectator on a hillside, the sable cloud beneath</li>
+                    <li>By the same illusion which lifts the horizon of the sea to the level of the spectator on ahillside, the sable cloud beneath</l>
+            
+
+        </section>
+        <section>
+            <mm-button id="fetchButton" label="Ver últimos registros"></mm-button>
+            <table id="dataTable" class="mm-table responsive-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>created_at</th>
+                        <th>timestamp_client</th>
+                        <th>type</th>
+                        <th>app_version</th>
+                        <th>client_app_version</th>
+                        <th>client_app_name</th>
+                        <th>client_path</th>
+                        <th>component_name</th>
+                        <th>component_type</th>
+                        <th>load_time</th>
+                        <th>os</th>
+                        <th>browser</th>
+                        <th>user_id</th>
+                        <th>description</th>
+                        <!-- ... otras cabeceras de columnas ... -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se agregarán aquí -->
+                </tbody>
+            </table>   
+                    
+        </section>
+    </main>
+
+    <footer>
+    </footer>
+    <script>
+        document.getElementById('fetchButton').addEventListener('click', function() {
+            fetch('https://x8ki-letl-twmt.n7.xano.io/api:9Zam5T9C/events')
+            .then(response => response.json())
+            .then(data => {
+                const tbody = document.querySelector('#dataTable tbody');
+                tbody.innerHTML = ''; // Limpia el cuerpo de la tabla
+
+                data.items.forEach(item => {
+                    const row = tbody.insertRow();
+                    
+                                // ID
+            const cellId = row.insertCell();
+            cellId.innerHTML = item.id;
+
+            // Created At
+            const cellCreatedAt = row.insertCell();
+            cellCreatedAt.innerHTML = item.created_at;
+
+            // Timestamp Client
+            const cellTimestampClient = row.insertCell();
+            cellTimestampClient.innerHTML = item.timestamp_client;
+
+            // Type
+            const cellType = row.insertCell();
+            cellType.innerHTML = item.type;
+
+            // App Version
+            const cellAppVersion = row.insertCell();
+            cellAppVersion.innerHTML = item.app_version;
+
+            // Client App Version
+            const cellClientAppVersion = row.insertCell();
+            cellClientAppVersion.innerHTML = item.client_app_version;
+
+            // Client App Name
+            const cellClientAppName = row.insertCell();
+            cellClientAppName.innerHTML = item.client_app_name;
+
+            // Client Path
+            const cellClientPath = row.insertCell();
+            cellClientPath.innerHTML = item.client_path;
+
+            // Component Name
+            const cellComponentName = row.insertCell();
+            cellComponentName.innerHTML = item.component_name;
+
+            // Component Type
+            const cellComponentType = row.insertCell();
+            cellComponentType.innerHTML = item.component_type;
+
+            // Load Time
+            const cellLoadTime = row.insertCell();
+            cellLoadTime.innerHTML = item.load_time;
+
+            // OS
+            const cellOS = row.insertCell();
+            cellOS.innerHTML = item.os;
+
+            // Browser
+            const cellBrowser = row.insertCell();
+            cellBrowser.innerHTML = item.browser;
+
+            // User ID
+            const cellUserId = row.insertCell();
+            cellUserId.innerHTML = item.user_id;
+
+            // Description
+            const cellDescription = row.insertCell();
+            cellDescription.innerHTML = item.description;
+                    
+                    // ... agregar más celdas según sea necesario
+                });
+            })
+            .catch(error => console.error('Error al obtener los datos:', error));
+        });
+    </script>
+    
+</body>
+</html>
